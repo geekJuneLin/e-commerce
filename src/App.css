@@ -1,0 +1,44 @@
+/* General */
+.box-shadow {
+  box-shadow: 0 1px 6px gray;
+}
+
+/* Header */
+header nav {
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  margin: 0 2.5em;
+}
+
+.nav-brand a,
+.nav-link {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+nav ul {
+  list-style: none;
+}
+
+ul li {
+  display: inline-block;
+  padding: 0 1em;
+}
+
+.cart-btn {
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  padding: 1em 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
