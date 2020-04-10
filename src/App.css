@@ -5,13 +5,15 @@
 
 /* Header */
 header nav {
-  padding: 1em 0;
+  padding: 2.5em 3.5em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-brand {
-  margin: 0 2.5em;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .nav-brand a,
@@ -26,6 +28,7 @@ nav ul {
 }
 
 ul li {
+  font-size: 1.2rem;
   display: inline-block;
   padding: 0 1em;
 }
@@ -36,9 +39,8 @@ ul li {
 
 /* Footer */
 footer {
-  padding: 1em 0;
+  padding: 1em 2em;
   width: 100%;
-  position: absolute;
-  bottom: 0;
   text-align: center;
+  pointer-events: none;
 }

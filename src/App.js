@@ -3,13 +3,15 @@ import "./App.css";
 import Context from "./Context/Context";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Shop from "./Pages/Shop";
+import Shop from "./Pages/Shop/Shop";
 import OnSale from "./Pages/OnSale";
 import NewArrival from "./Pages/NewArrival";
 
 function App() {
+  // items in cart
   const [itemsInCart, setItemsInCart] = React.useState(10);
 
+  // status of whether showing the cart
   const [showCart, setShowCart] = React.useState(false);
 
   return (

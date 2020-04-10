@@ -2,6 +2,9 @@ import React from "react";
 import "./style.css";
 import Context from "../../Context/Context";
 import ShoppingCard from "./ShoppingCartCard";
+import Subtotal from "./Subtotal";
+import ShoppingCartCard from "./ShoppingCartCard";
+import ShoppingCartFooter from "./ShoppingCartFooter";
 
 export default function ShoppingCart() {
   const { items, showCart } = React.useContext(Context);
@@ -23,7 +26,12 @@ export default function ShoppingCart() {
       </div>
       <div className="shopping-cart-body">
         <ShoppingCard />
+        <ShoppingCard />
+        <ShoppingCard />
+        <ShoppingCard />
+        <Subtotal />
       </div>
+      <ShoppingCartFooter />
     </div>
   );
 }
