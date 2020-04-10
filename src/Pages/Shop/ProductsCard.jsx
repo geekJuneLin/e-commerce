@@ -1,13 +1,27 @@
 import React from "react";
 import "./style.css";
 
-export default function ProductsCard() {
+export default function ProductsCard(props) {
+  const { name, img, description, price, addToCart } = props;
+
+  // handle add to cart
+  const handleAddToCart = () => {
+    addToCart({
+      name: name,
+      price: price,
+      img: img,
+    });
+  };
+
   return (
     <div className="products-card">
-      <img src="https://static.toiimg.com/photo/61654288.cms" alt="img" />
-      <h4>iPhone X</h4>
-      <p>Lorem ipsum dolor sit amet.</p>
-      <p>$1299</p>
+      <img src={img} alt="img" />
+      <h4>{name}</h4>
+      <p>{description}</p>
+      <p>${price}</p>
+      <div className="add-btn" onClick={handleAddToCart}>
+        Add to cart
+      </div>
     </div>
   );
 }

@@ -9,8 +9,11 @@ import ShoppingCartFooter from "./ShoppingCartFooter";
 export default function ShoppingCart() {
   const { items, showCart } = React.useContext(Context);
 
-  const [numberOfItems, setItems] = items;
+  const [cartItems, setCartItems] = items;
   const [isShow, setIsShow] = showCart;
+
+  // subtotal
+  const [subtotal, setSubtotal] = React.useState(0);
 
   return (
     <div
@@ -20,16 +23,22 @@ export default function ShoppingCart() {
       <div className="shopping-cart-title">
         <Context.Consumer>
           {(context) => {
-            return <h3>My Cart: {numberOfItems}</h3>;
+            return <h3>My Cart: {cartItems.length}</h3>;
           }}
         </Context.Consumer>
       </div>
       <div className="shopping-cart-body">
-        <ShoppingCard />
-        <ShoppingCard />
-        <ShoppingCard />
-        <ShoppingCard />
-        <Subtotal />
+        {cartItems.map((item, index) => {
+          return (
+            <ShoppingCard
+              key={index}
+              name={item.name}
+              price={item.price}
+              img={item.img}
+            />
+          );
+        })}
+        <Subtotal subtotal={subtotal} />
       </div>
       <ShoppingCartFooter />
     </div>

@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import Context from "./Context/Context";
 
+import Products from "./products";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Shop from "./Pages/Shop/Shop";
 import OnSale from "./Pages/OnSale";
@@ -9,16 +11,20 @@ import NewArrival from "./Pages/NewArrival";
 
 function App() {
   // items in cart
-  const [itemsInCart, setItemsInCart] = React.useState(10);
+  const [itemsInCart, setItemsInCart] = React.useState([]);
 
   // status of whether showing the cart
   const [showCart, setShowCart] = React.useState(false);
+
+  // products in store
+  const [productsInStore, setProductsInStore] = React.useState(Products);
 
   return (
     <Context.Provider
       value={{
         items: [itemsInCart, setItemsInCart],
         showCart: [showCart, setShowCart],
+        products: [productsInStore, setProductsInStore],
       }}
     >
       <Router>
