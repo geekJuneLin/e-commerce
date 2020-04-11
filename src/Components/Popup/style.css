@@ -31,7 +31,7 @@
 .pop-up-window img {
   width: 200px;
   height: 150px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .pop-up-window h3 {
@@ -79,4 +79,13 @@
 
 .product-name {
   font-weight: 700;
+}
+
+.fa-times {
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.fa-times:hover {
+  color: #000;
 }

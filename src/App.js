@@ -22,6 +22,15 @@ function App() {
   // filtered products
   const [filteredProducts, setFilteredProducts] = React.useState([]);
 
+  // popup window props
+  const [popup, setPopup] = React.useState({
+    isShow: false,
+    item: {
+      name: "",
+      img: "",
+    },
+  });
+
   return (
     <Context.Provider
       value={{
@@ -29,6 +38,7 @@ function App() {
         showCart: [showCart, setShowCart],
         products: [productsInStore, setProductsInStore],
         filtered: [filteredProducts, setFilteredProducts],
+        popupState: [popup, setPopup],
       }}
     >
       <Router>
