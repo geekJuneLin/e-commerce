@@ -18,11 +18,11 @@ export default function ShoppingCart() {
   // remove items from the cart
   const removeItemsFromCart = (item) => {
     console.log(item.name);
-    setCartItems((prev) => {
-      prev.filter((i) => {
-        return i.name !== item.name;
-      });
+    const newCartItems = cartItems.filter((i) => {
+      return i.name !== item.name;
     });
+
+    setCartItems(newCartItems);
   };
 
   useEffect(() => {
