@@ -4,10 +4,10 @@ import ProductsCard from "./ProductsCard";
 import Context from "../../Context/Context";
 
 export default function ProductsContainer() {
-  const { products, items } = React.useContext(Context);
+  const { filtered, items } = React.useContext(Context);
 
   // products in stock
-  const [productsInStore, setProductsInStore] = products;
+  const [productsInStore, setProductsInStore] = filtered;
 
   // items added in the cart
   const [itemsInCart, setItemsInCart] = items;

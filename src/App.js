@@ -19,12 +19,16 @@ function App() {
   // products in store
   const [productsInStore, setProductsInStore] = React.useState(Products);
 
+  // filtered products
+  const [filteredProducts, setFilteredProducts] = React.useState([]);
+
   return (
     <Context.Provider
       value={{
         items: [itemsInCart, setItemsInCart],
         showCart: [showCart, setShowCart],
         products: [productsInStore, setProductsInStore],
+        filtered: [filteredProducts, setFilteredProducts],
       }}
     >
       <Router>
