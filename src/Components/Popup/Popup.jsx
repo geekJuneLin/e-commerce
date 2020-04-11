@@ -13,7 +13,13 @@ export default function Popup() {
   };
 
   return (
-    <div className="pop-up" style={{ display: isShow ? "block" : "none" }}>
+    <div
+      className="pop-up"
+      id="pop-up"
+      style={{
+        display: isShow ? "block" : "none",
+      }}
+    >
       <div className="pop-up-window">
         <img src={item.img} alt="product-img" />
         <h3>Products added to your cart.</h3>

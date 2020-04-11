@@ -8,6 +8,16 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  animation: opacity 0.3s linear;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .pop-up-window {
@@ -15,7 +25,7 @@
   position: absolute;
   color: black;
   width: 50%;
-  height: 40%;
+  height: 400px;
   top: 0;
   left: 0;
   right: 0;
@@ -75,6 +85,19 @@
   position: absolute;
   top: 0.6em;
   right: 0.8em;
+}
+
+.close-btn:hover {
+  animation: rotate 0.5s linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
 }
 
 .product-name {
