@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import Context from "../../Context/Context";
 import ShoppingCard from "./ShoppingCartCard";
@@ -14,6 +14,24 @@ export default function ShoppingCart() {
 
   // subtotal
   const [subtotal, setSubtotal] = React.useState(0);
+
+  // remove items from the cart
+  const removeItemsFromCart = (item) => {
+    console.log(item.name);
+    setCartItems((prev) => {
+      prev.filter((i) => {
+        return i.name !== item.name;
+      });
+    });
+  };
+
+  useEffect(() => {
+    var total = 0.0;
+    cartItems.forEach((i) => {
+      total += Number(i.price);
+    });
+    setSubtotal(total.toFixed(2));
+  }, [cartItems]);
 
   return (
     <div
@@ -35,6 +53,7 @@ export default function ShoppingCart() {
               name={item.name}
               price={item.price}
               img={item.img}
+              removeItem={removeItemsFromCart}
             />
           );
         })}

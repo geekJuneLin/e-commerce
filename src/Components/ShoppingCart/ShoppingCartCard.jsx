@@ -1,9 +1,11 @@
 import React from "react";
 
-export default function ShoppingCartCard({ name, price, img }) {
+export default function ShoppingCartCard({ name, price, img, removeItem }) {
   // remove btn click
   const handleRemove = () => {
-    console.log("remove btn clicked!");
+    removeItem({
+      name: name,
+    });
   };
 
   return (
