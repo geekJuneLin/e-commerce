@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 
 export default function Header() {
-  const { showCart } = React.useContext(Context);
+  const { items, showCart } = React.useContext(Context);
   const [isShow, setShow] = showCart;
+  const [itemsInCart, setItemsInCart] = items;
 
   function showOrHideCart() {
     setShow(!isShow);
@@ -37,7 +38,8 @@ export default function Header() {
           </li>
           <li>
             <div className="cart-btn" onClick={showOrHideCart}>
-              Cart <i className="fas fa-cart-plus"></i>
+              Cart: <span className="items-amount">{itemsInCart.length}</span>
+              <i className="fas fa-cart-plus"></i>
             </div>
           </li>
         </ul>

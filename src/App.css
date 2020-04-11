@@ -41,6 +41,14 @@ ul li {
   cursor: pointer;
 }
 
+.items-amount {
+  padding: 0 5px;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  margin-right: 0.5em;
+}
+
 /* Footer */
 footer {
   padding: 3% 6%;
