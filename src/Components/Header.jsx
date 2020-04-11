@@ -1,6 +1,7 @@
 import React from "react";
 import Context from "../Context/Context";
 import { Link } from "react-router-dom";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 
 export default function Header() {
   const { showCart } = React.useContext(Context);
@@ -11,7 +12,7 @@ export default function Header() {
   }
 
   return (
-    <header>
+    <header id="header">
       <nav className="box-shadow">
         <div className="nav-brand">
           <Link className="nav-link" to="/">
@@ -41,6 +42,7 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+      <ShoppingCart />
     </header>
   );
 }
