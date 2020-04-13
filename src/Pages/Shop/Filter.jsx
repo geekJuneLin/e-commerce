@@ -33,10 +33,11 @@ export default function Filter() {
 
   useEffect(() => {
     // filter the displaying products
-    const filteredProducts = productsInStock.filter((p) => {
+    const filteredPro = productsInStock.filter((p) => {
       return p.price <= value.max && p.price >= value.min;
     });
-    setFilteredProducts(filteredProducts);
+
+    setFilteredProducts(filteredPro);
   }, [value]);
 
   return (

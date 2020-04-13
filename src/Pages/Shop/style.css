@@ -34,6 +34,41 @@
   font-size: 1.5rem;
 }
 
+/* select */
+select {
+  padding: 0.5em 1.25em 0.5em 0.5em;
+  margin-left: 0.5em;
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f107";
+  font-size: 12px;
+  pointer-events: none;
+  position: absolute;
+  right: 4px;
+}
+
+/* reset */
+.products-header button {
+  padding: 0.5em;
+  font-size: 0.75em;
+  border-radius: 6px;
+  outline: none;
+}
+
 /* filter */
 .filter {
   padding: 2em;
