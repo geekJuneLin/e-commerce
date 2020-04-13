@@ -28,13 +28,15 @@ export default function ProductsCard(props) {
 
   return (
     <div className="products-card">
-      <img src={img} alt="img" />
-      <h4>{name}</h4>
-      <p>{description}</p>
-      <p>${price}</p>
-      <div className="add-btn" onClick={handleAddToCart}>
-        Add to cart
-      </div>
+      <a href="/product-detail">
+        <img src={img} alt="img" />
+        <h4>{name}</h4>
+        <p>{description}</p>
+        <p>${price}</p>
+        <div className="add-btn" onClick={handleAddToCart}>
+          Add to cart
+        </div>
+      </a>
     </div>
   );
 }

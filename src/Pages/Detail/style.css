@@ -1,0 +1,50 @@
+.detail-container {
+  padding: 4em 3.5em;
+}
+
+.detail-container-body {
+  display: flex;
+  align-items: center;
+  padding: 6em 2em;
+}
+
+.detail-img,
+.detail-specs {
+  width: 30%;
+}
+
+.detail-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-specs {
+  padding: 2em 0.2em;
+  border: 2px solid #f6f7fa;
+  border-radius: 4px;
+}
+
+.detail-specs-overall-info {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0.5em 0.6em;
+  background-color: hsl(0, 0%, 96%);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+.detail-specs-overall-info b {
+  color: hsl(0, 0%, 70%);
+}
+
+.detail-specs ul li {
+  width: 90%;
+  padding-left: 0;
+  padding-bottom: 0.4em;
+  font-size: 0.9rem;
+  display: block;
+  margin: 0.6em auto;
+  border-bottom: 1px solid #f6f7fa;
+}
