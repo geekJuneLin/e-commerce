@@ -3,6 +3,7 @@ import "./style.css";
 import context from "../../Context/Context";
 import Header from "../../Components/Header";
 import Context from "../../Context/Context";
+import Popup from "../../Components/Popup/Popup";
 
 export default function ProductDetail({ match }) {
   // destructuring the match,
@@ -12,8 +13,14 @@ export default function ProductDetail({ match }) {
   } = match;
 
   // get the product using context
-  const { products } = React.useContext(Context);
+  const { products, items, popupState } = React.useContext(Context);
   const productsInStore = products[0];
+
+  // items in cart
+  const [itemsInCart, setItemsInCart] = items;
+
+  // pop up state
+  const [popup, setPopup] = popupState;
 
   const [item, setItem] = useState({
     img: "",
@@ -21,6 +28,28 @@ export default function ProductDetail({ match }) {
     brand: "",
     specs: {},
   });
+
+  // handle add to cart btn click
+  const handleOnClick = () => {
+    console.log("add to cart btn clicked!");
+    setItemsInCart([
+      ...itemsInCart,
+      {
+        name: productName,
+        price: item.price,
+        img: item.img,
+      },
+    ]);
+
+    // show the added popup info
+    setPopup({
+      isShow: true,
+      item: {
+        name: productName,
+        img: item.img,
+      },
+    });
+  };
 
   useEffect(() => {
     productsInStore.forEach((p) => {
@@ -98,10 +127,13 @@ export default function ProductDetail({ match }) {
           <p className="delivery">
             <b>Delivery:</b> Ships in 2 days
           </p>
-          <button className="add-to-cart-btn">
+          <button className="add-to-cart-btn" onClick={handleOnClick}>
             <i className="fas fa-shopping-cart"></i>Add to cart
           </button>
         </div>
+
+        {/* popup */}
+        <Popup />
       </div>
     </>
   );
