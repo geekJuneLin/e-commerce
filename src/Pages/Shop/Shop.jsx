@@ -11,7 +11,7 @@ export default function Shop() {
   // stick the nav bar on the top when users scroll the page down
   const handleScroll = () => {
     const header = document.getElementById("header");
-    if (window.pageYOffset > header.clientHeight / 1.5) {
+    if (window.pageYOffset > header.clientHeight) {
       header.classList.add("sticky");
     } else {
       header.classList.remove("sticky");

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./style.css";
 import Context from "../../Context/Context";
+import { Link } from "react-router-dom";
 
 export default function ProductsCard(props) {
   const { name, img, description, price, addToCart } = props;
@@ -28,7 +29,7 @@ export default function ProductsCard(props) {
 
   return (
     <div className="products-card">
-      <a href="/product-detail">
+      <Link to={"/product-detail/" + name}>
         <img src={img} alt="img" />
         <h4>{name}</h4>
         <p>{description}</p>
@@ -36,7 +37,7 @@ export default function ProductsCard(props) {
         <div className="add-btn" onClick={handleAddToCart}>
           Add to cart
         </div>
-      </a>
+      </Link>
     </div>
   );
 }

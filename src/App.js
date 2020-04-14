@@ -47,7 +47,10 @@ function App() {
         <Route exact path="/" component={Shop} />
         <Route path="/on-sale" component={OnSale} />
         <Route path="/new-arrival" component={NewArrival} />
-        <Route path="/product-detail" component={ProductDetail} />
+        <Route
+          path="/product-detail/:productName"
+          render={(props) => <ProductDetail {...props} />}
+        />
       </Router>
     </Context.Provider>
   );

@@ -1,58 +1,106 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
+import context from "../../Context/Context";
 import Header from "../../Components/Header";
+import Context from "../../Context/Context";
 
-export default function ProductDetail() {
+export default function ProductDetail({ match }) {
+  // destructuring the match,
+  // and parse the productName passed from the shop page
+  const {
+    params: { productName },
+  } = match;
+
+  // get the product using context
+  const { products } = React.useContext(Context);
+  const productsInStore = products[0];
+
+  const [item, setItem] = useState({
+    img: "",
+    price: "",
+    brand: "",
+    specs: {},
+  });
+
+  useEffect(() => {
+    productsInStore.forEach((p) => {
+      if (productName === p.name) {
+        setItem({
+          img: p.img,
+          price: p.price,
+          brand: p.brand,
+          specs: p.specs,
+        });
+        return;
+      }
+    });
+  }, []);
+
   return (
     <>
       <Header />
       <div className="detail-container">
-        <h1>
-          Samsung Galaxy A10 (2019) Smartphone 2GB+32GB Black - 2 Year Warranty
-        </h1>
+        {/* details specs img */}
         <div className="detail-container-body">
-          <div className="detail-img">
-            <img
-              src="https://www.pbtech.co.nz/imgprod/M/P/MPHSAM21000__2.jpg?h=3510668198"
-              alt="product-img"
-            />
-          </div>
-          <div className="detail-specs">
-            <div className="detail-specs-overall-info">
-              <b>Brand: </b> Samsung
+          <h1>{productName}</h1>
+          <div className="detail-img-specs">
+            <div className="detail-img">
+              <img src={item.img} alt="product-img" />
             </div>
-            <ul>
-              <li>
-                <b>Screen Size: </b>
-                6.2 inches
-              </li>
-              <li>
-                <b>Celluar Connectivity: </b>
-                4G (Single SIM)
-              </li>
-              <li>
-                <b>Supported Network: </b>
-                Vodafone, 2 Degrees, Spark, Skinny
-              </li>
-              <li>
-                <b>Battery Capacity: </b>
-                3400mAh
-              </li>
-              <li>
-                <b>Rear Camera: </b>
-                13 Megapixels
-              </li>
-              <li>
-                <b>Front-Facing Camera: </b>5 Megapixels
-              </li>
-              <li>
-                <b>Storage Size: </b>32GB
-              </li>
-              <li>
-                <b>Colour: </b>Black
-              </li>
-            </ul>
+            <div className="detail-specs">
+              <div className="detail-specs-overall-info">
+                <b>Brand: </b> {item.brand}
+              </div>
+              <ul>
+                <li>
+                  <b>Screen Size: </b>
+                  {item.specs.screenSize}
+                </li>
+                <li>
+                  <b>Celluar Connectivity: </b>
+                  {item.specs.celluarConnectivity}
+                </li>
+                <li>
+                  <b>Supported Network: </b>
+                  {item.specs.supportNet}
+                </li>
+                <li>
+                  <b>Battery Capacity: </b>
+                  {item.specs.battery}
+                </li>
+                <li>
+                  <b>Rear Camera: </b>
+                  {item.specs.rearCamera}
+                </li>
+                <li>
+                  <b>Front-Facing Camera: </b>
+                  {item.specs.frontCamera}
+                </li>
+                <li>
+                  <b>Storage Size: </b>
+                  {item.specs.storage}
+                </li>
+                <li>
+                  <b>Colour: </b>
+                  {item.specs.color}
+                </li>
+              </ul>
+            </div>
           </div>
+        </div>
+
+        {/* add to cart */}
+        <div className="add-to-cart">
+          <h2>${item.price}</h2>
+          <p className="pick-up">
+            <b>Store Pickup:</b> Pick up is unavailable
+          </p>
+          <p className="delivery">
+            <b>Delivery:</b> Ships in 2 days
+          </p>
+          <button className="add-to-cart-btn">
+            <i className="fas fa-shopping-cart"></i>Add to cart
+          </button>
         </div>
       </div>
     </>
