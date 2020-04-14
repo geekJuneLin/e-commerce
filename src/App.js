@@ -10,6 +10,7 @@ import OnSale from "./Pages/OnSale";
 import NewArrival from "./Pages/NewArrival";
 import Header from "./Components/Header";
 import ProductDetail from "./Pages/Detail/ProductDetail";
+import MyCart from "./Pages/Cart/MyCart";
 
 function App() {
   // items in cart
@@ -51,6 +52,7 @@ function App() {
           path="/product-detail/:productName"
           render={(props) => <ProductDetail {...props} />}
         />
+        <Route path="/myCart" component={MyCart} />
       </Router>
     </Context.Provider>
   );

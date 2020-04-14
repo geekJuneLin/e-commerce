@@ -128,6 +128,7 @@
   background-color: #f08222;
   padding: 0.5em 2em;
   width: 98%;
+  cursor: pointer;
 }
 
 .add-to-cart-btn:hover {

@@ -1,5 +1,6 @@
 import React from "react";
 import Context from "../../Context/Context";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCartFooter() {
   const { showCart } = React.useContext(Context);
@@ -12,6 +13,9 @@ export default function ShoppingCartFooter() {
 
   return (
     <div className="shopping-cart-footer">
+      <Link className="btn" to="/myCart">
+        View Cart
+      </Link>
       <div className="btn" onClick={handleClose}>
         Close
       </div>
