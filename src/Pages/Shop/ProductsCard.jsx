@@ -34,10 +34,10 @@ export default function ProductsCard(props) {
         <h4>{name}</h4>
         <p>{description}</p>
         <p>${price}</p>
-        <div className="add-btn" onClick={handleAddToCart}>
-          Add to cart
-        </div>
       </Link>
+      <div className="add-btn" onClick={handleAddToCart}>
+        Add to cart
+      </div>
     </div>
   );
 }

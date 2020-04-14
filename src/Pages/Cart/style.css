@@ -1,5 +1,6 @@
-h1 {
+.container h1 {
   padding-bottom: 0.3em;
+  margin-bottom: 1em;
   color: #0d4f77;
   text-transform: uppercase;
   border-bottom: 2px solid hsl(0 0% 95%);
@@ -7,6 +8,25 @@ h1 {
 
 .container {
   padding: 4% 8em;
+}
+
+/* empty cart */
+.empty-cart {
+  padding: 2em;
+  text-align: center;
+  border: 1px solid hsl(0 0% 90%);
+}
+
+.empty-cart .fa-shopping-cart {
+  font-weight: 900;
+  color: #0d4f77;
+  font-size: 45px;
+}
+
+.empty-cart h1 {
+  border: none;
+  margin: 0;
+  text-transform: none;
 }
 
 table {

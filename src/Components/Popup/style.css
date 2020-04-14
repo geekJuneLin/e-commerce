@@ -58,7 +58,8 @@
   color: #5cb644;
 }
 
-.pop-up-window button {
+.pop-up-window button,
+.view-cart-btn {
   padding: 0.65em;
   border: 0;
   outline: 0;
@@ -69,7 +70,8 @@
   color: hsl(0 0% 96%);
 }
 
-.pop-up-window button:hover {
+.pop-up-window button:hover,
+.view-cart-btn:hover {
   transition: all 0.2s ease-in;
   background-color: #d4731e;
 }
