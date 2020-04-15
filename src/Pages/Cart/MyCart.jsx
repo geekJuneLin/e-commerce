@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import Header from "../../Components/Header";
 import TableBody from "./TableBody";
@@ -14,9 +14,19 @@ export default function MyCart() {
   // is alert show
   const [isAlertShow, setIsShowAlert] = useState(false);
 
+  // subtotal in checkout
+  const [subtotal, setSubtotal] = useState(0);
+
+  // calculate the subtotal of all the items in the cart
+  useEffect(() => {
+    const subtotal = itemsInCart.reduce((a, b) => {
+      return a + Number(b.price);
+    }, 0);
+    setSubtotal(subtotal);
+  }, [itemsInCart]);
+
   // handle clear btn click
   const handleClearOnClick = () => {
-    console.log("clear btn clicked!");
     setIsShowAlert(true);
   };
 
@@ -78,7 +88,7 @@ export default function MyCart() {
             </table>
 
             {/* subtotal section */}
-            <Subtotal />
+            <Subtotal subtotal={subtotal} />
 
             {/* Delete Alert */}
             {isAlertShow && (

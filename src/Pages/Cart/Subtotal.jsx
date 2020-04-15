@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function Subtotal() {
+export default function Subtotal({ subtotal }) {
   return (
     <div className="my-cart-subtotal">
       <div className="subtotal-top">
         <div className="left">
           <span>Subtotal:</span>
         </div>
-        <div className="right">$ 1299.98</div>
+        <div className="right">$ {subtotal}</div>
       </div>
       <div className="subtotal-mid">
         <div className="left">
@@ -20,7 +20,7 @@ export default function Subtotal() {
           <span>Total Due:</span>
         </div>
         <div className="right">
-          <span className="unit">NZD</span> $ 1299.98
+          <span className="unit">NZD</span> $ {Number(subtotal) + Number(5)}
         </div>
         <button>
           <i className="fas fa-shield-alt"></i>Secure Checkout
