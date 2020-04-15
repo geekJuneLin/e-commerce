@@ -54,11 +54,27 @@ td img {
   height: 100px;
 }
 
-td p {
-  font-size: 0.8rem;
+.item-name {
+  vertical-align: middle;
 }
 
-.item-name {
-  width: 40%;
-  vertical-align: middle;
+/* clear section */
+tbody:nth-last-child(1) {
+  background-color: hsl(0 0% 90%);
+}
+
+.clear-section {
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  border-radius: 2px;
+  background-color: #51b2ee;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.clear-section:hover {
+  transition: all 0.2s ease-in;
+  background-color: #2582bb;
 }
