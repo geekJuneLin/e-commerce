@@ -39,6 +39,22 @@ table {
   border-top: 1px solid hsl(0 0% 90%);
 }
 
+.table-body td button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button .fa-times-circle {
+  color: #e6e3e3;
+}
+
+button .fa-times-circle:hover {
+  transition: all 0.2s ease-in;
+  color: #ee3924;
+}
+
 th {
   background-color: hsl(0 0% 95%);
 }

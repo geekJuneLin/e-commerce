@@ -54,6 +54,7 @@ export default function MyCart() {
                   <th>Unit Price</th>
                   <th>Quantity</th>
                   <th>Total</th>
+                  <th></th>
                 </tr>
               </thead>
 
@@ -83,6 +84,7 @@ export default function MyCart() {
                   <td></td>
                   <td></td>
                   <td></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -105,7 +107,7 @@ export default function MyCart() {
         ) : (
           <div className="empty-cart">
             <i className="fas fa-shopping-cart"></i>
-            <h1>Your Cart is empty!</h1>
+            <h1>Your cart is empty!</h1>
           </div>
         )}
       </div>
