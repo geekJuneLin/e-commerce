@@ -4,11 +4,12 @@ import Header from "../../Components/Header";
 import TableBody from "./TableBody";
 import Context from "../../Context/Context";
 import Alert from "../../Components/Alert/Alert";
+import Subtotal from "./Subtotal";
 
 export default function MyCart() {
   // get the itemsInCart from the context
   const { items } = React.useContext(Context);
-  const itemsInCart = items[0];
+  const [itemsInCart, setItemsInCart] = items;
 
   // is alert show
   const [isAlertShow, setIsShowAlert] = useState(false);
@@ -17,6 +18,15 @@ export default function MyCart() {
   const handleClearOnClick = () => {
     console.log("clear btn clicked!");
     setIsShowAlert(true);
+  };
+
+  // Alert btn click functions
+  const onYesClick = () => {
+    setItemsInCart([]);
+  };
+
+  const onNoClick = () => {
+    setIsShowAlert(false);
   };
 
   return (
@@ -66,8 +76,21 @@ export default function MyCart() {
                 </tr>
               </tbody>
             </table>
+
+            {/* subtotal section */}
+            <Subtotal />
+
             {/* Delete Alert */}
-            {isAlertShow && <Alert />}
+            {isAlertShow && (
+              <Alert
+                alert={"Are your sure?"}
+                alertInfo={
+                  "You are about to clear entire cart. Are you sure you want to do this?"
+                }
+                onYesClick={onYesClick}
+                onNoClick={onNoClick}
+              />
+            )}
           </>
         ) : (
           <div className="empty-cart">

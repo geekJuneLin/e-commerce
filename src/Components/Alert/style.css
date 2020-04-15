@@ -62,9 +62,11 @@
 }
 
 .alert-section .btns button:nth-child(1):hover {
+  transition: all 0.2s ease-in;
   background-color: #da7722;
 }
 
 .alert-section .btns button:nth-child(2):hover {
+  transition: all 0.2s ease-in;
   background-color: rgb(134, 134, 134);
 }

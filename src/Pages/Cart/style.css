@@ -78,3 +78,62 @@ tbody:nth-last-child(1) {
   transition: all 0.2s ease-in;
   background-color: #2582bb;
 }
+
+/* my cart subtotal */
+.my-cart-subtotal {
+  padding: 1em;
+  width: 300px;
+  margin-top: 36px;
+  margin-left: auto;
+  border: 1px solid hsl(0 0% 90%);
+  text-align: right;
+}
+
+.subtotal-top,
+.subtotal-mid {
+  padding-bottom: 12px;
+}
+
+.subtotal-mid {
+  border-bottom: 1px solid hsl(0 0% 90%);
+}
+
+.my-cart-subtotal .left,
+.my-cart-subtotal .right {
+  display: inline-block;
+  width: 50%;
+}
+
+.subtotal-bot {
+  margin-top: 12px;
+}
+
+.subtotal-bot button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 12px;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  border-radius: 2px;
+  background-color: #2cc732;
+  color: #fff;
+}
+
+.unit {
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.subtotal-bot button:hover {
+  transition: all 0.2s ease-in;
+  background-color: #24ac28;
+}
+
+.fa-shield-alt {
+  margin-right: 6px;
+}
+
+.fa-chevron-right {
+  margin-left: 6px;
+}

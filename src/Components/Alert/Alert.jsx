@@ -1,19 +1,16 @@
 import React from "react";
 import "./style.css";
 
-export default function Alert() {
+export default function Alert({ alert, alertInfo, onYesClick, onNoClick }) {
   return (
     <div className="black-container">
       <div className="alert-section">
-        <h1>Are your sure?</h1>
+        <h1>{alert}</h1>
         <div className="alert-content">
-          <p>
-            You are about to clear entire cart. Are you sure you want to do
-            this?
-          </p>
+          <p>{alertInfo}</p>
           <div className="btns">
-            <button>Yes</button>
-            <button>No</button>
+            <button onClick={onYesClick}>Yes</button>
+            <button onClick={onNoClick}>No</button>
           </div>
         </div>
       </div>
