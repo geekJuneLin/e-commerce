@@ -33,6 +33,7 @@
 
 .shopping-cart {
   position: absolute;
+  z-index: 10;
   top: 4.8em;
   right: 1em;
   width: 450px;
