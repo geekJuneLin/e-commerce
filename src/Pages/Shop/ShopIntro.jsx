@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
 export default function ShopIntro() {
   var slides;
   var showIndex = 1;
+
   useEffect(() => {
     slides = document.getElementsByClassName("carousel-slide");
-    autoShow();
+    showSlideAtIndex(showIndex);
   });
 
   // automatically change slides

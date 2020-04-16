@@ -1,6 +1,24 @@
 import React from "react";
+import StripCheckout from "react-stripe-checkout";
+import axios from "axios";
 
-export default function Subtotal({ subtotal }) {
+export default function Subtotal({ subtotal, changePaymentStatus }) {
+  // handle token
+  const handleToken = async (token, addr) => {
+    const res = await axios.post("http://localhost:5000/checkout", {
+      price: Number(subtotal) + 5,
+      token,
+    });
+
+    const status = res.status;
+
+    if (status === 200) {
+      changePaymentStatus(true);
+    } else {
+      changePaymentStatus(false);
+    }
+  };
+
   return (
     <div className="my-cart-subtotal">
       <div className="subtotal-top">
@@ -22,10 +40,18 @@ export default function Subtotal({ subtotal }) {
         <div className="right">
           <span className="unit">NZD</span> $ {Number(subtotal) + Number(5)}
         </div>
-        <button>
-          <i className="fas fa-shield-alt"></i>Secure Checkout
-          <i className="fas fa-chevron-right"></i>
-        </button>
+        <StripCheckout
+          className="checkBtn"
+          stripeKey="pk_test_MU6usV3iRrTsGWC6PVrRYfbU00FgNHBCkj"
+          token={handleToken}
+          shippingAddress
+          billingAddress
+        >
+          <button>
+            <i className="fas fa-shield-alt"></i>Secure Checkout
+            <i className="fas fa-chevron-right"></i>
+          </button>
+        </StripCheckout>
       </div>
     </div>
   );

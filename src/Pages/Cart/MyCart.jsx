@@ -5,6 +5,7 @@ import TableBody from "./TableBody";
 import Context from "../../Context/Context";
 import Alert from "../../Components/Alert/Alert";
 import Subtotal from "./Subtotal";
+import PaidInfo from "./PaidInfo";
 
 export default function MyCart() {
   // get the itemsInCart from the context
@@ -13,6 +14,9 @@ export default function MyCart() {
 
   // is alert show
   const [isAlertShow, setIsShowAlert] = useState(false);
+
+  // successfully purchased items
+  const [isSuccess, setIsSuccess] = useState(false);
 
   // subtotal in checkout
   const [subtotal, setSubtotal] = useState(0);
@@ -37,6 +41,15 @@ export default function MyCart() {
 
   const onNoClick = () => {
     setIsShowAlert(false);
+  };
+
+  // handle payment status on change
+  const handlePaymentStatus = (status) => {
+    // clear the items in the cart
+    setItemsInCart([]);
+
+    // display the success info
+    setIsSuccess(status);
   };
 
   return (
@@ -90,7 +103,10 @@ export default function MyCart() {
             </table>
 
             {/* subtotal section */}
-            <Subtotal subtotal={subtotal} />
+            <Subtotal
+              subtotal={subtotal}
+              changePaymentStatus={handlePaymentStatus}
+            />
 
             {/* Delete Alert */}
             {isAlertShow && (
@@ -104,6 +120,8 @@ export default function MyCart() {
               />
             )}
           </>
+        ) : isSuccess ? (
+          <PaidInfo />
         ) : (
           <div className="empty-cart">
             <i className="fas fa-shopping-cart"></i>

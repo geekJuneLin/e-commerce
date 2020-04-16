@@ -153,3 +153,23 @@ tbody:nth-last-child(1) {
 .fa-chevron-right {
   margin-left: 6px;
 }
+
+/* Paid info */
+.paid-info {
+  padding: 2em;
+  text-align: center;
+  border: 1px solid hsl(0 0% 90%);
+}
+
+.paid-info h1 {
+  border: none;
+  color: #1ed124;
+  margin-bottom: 0;
+  text-transform: none;
+}
+
+.paid-info .fa-shopping-cart {
+  font-weight: 900;
+  color: #1ed124;
+  font-size: 45px;
+}
