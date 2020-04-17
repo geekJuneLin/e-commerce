@@ -3,14 +3,17 @@ import "./style.css";
 import ProductsCard from "./ProductsCard";
 import Context from "../../Context/Context";
 
-export default function ProductsContainer() {
-  const { filtered, items, products } = React.useContext(Context);
+export default function ProductsContainer({ products }) {
+  // get the context
+  const { filtered, items } = React.useContext(Context);
+
+  if (products) console.log(products.products);
 
   // products in stock
   const [productsInStore, setProductsInStore] = filtered;
 
   // original products in store
-  const [product, setProducts] = products;
+  // const [product, setProducts] = products;
 
   // items added in the cart
   const [itemsInCart, setItemsInCart] = items;
@@ -67,9 +70,10 @@ export default function ProductsContainer() {
     }
   };
 
+  // handle filter on change
   const handleFilterOnChange = (e) => {
     console.log("filtering by " + e.target.value);
-    const sorted = product.slice();
+    const sorted = products.slice();
     switch (e.target.value) {
       case "New":
         setProductsInStore(
@@ -98,8 +102,9 @@ export default function ProductsContainer() {
     }
   };
 
+  // handle reset btn onClick
   const handleResetOnClick = () => {
-    setProductsInStore(product);
+    setProductsInStore(products);
   };
 
   return (
@@ -126,18 +131,19 @@ export default function ProductsContainer() {
         <button id="reset-btn">Reset filter</button>
       </div>
       <div className="products-body">
-        {productsInStore.map((product, index) => {
-          return (
-            <ProductsCard
-              key={index}
-              name={product.name}
-              img={product.img}
-              description={product.description}
-              price={product.price}
-              addToCart={addToCart}
-            />
-          );
-        })}
+        {products &&
+          products.products.map((product) => {
+            return (
+              <ProductsCard
+                key={product.id}
+                name={product.productName}
+                img={product.productImg[0].url}
+                description={product.productDescription}
+                price={product.productPrice}
+                addToCart={addToCart}
+              />
+            );
+          })}
       </div>
     </div>
   );

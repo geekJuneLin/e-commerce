@@ -19,7 +19,6 @@ export default function ShopIntro() {
   // display the slide at index i
   const showSlideAtIndex = (i) => {
     showIndex += i;
-    console.log(slides.length);
     if (showIndex > slides.length) {
       showIndex = 1;
     }

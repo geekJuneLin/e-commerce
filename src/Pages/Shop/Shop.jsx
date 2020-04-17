@@ -15,7 +15,27 @@ import gql from "graphql-tag";
 const productsQuery = gql`
   query {
     products {
+      id
       productName
+      productDescription
+      productPrice
+      productImg {
+        url
+      }
+      productBrand {
+        brandName
+      }
+      productSaleType
+      productSpecs {
+        screenSize
+        supportNet
+        celluarConnectivity
+        battery
+        rearCamera
+        frontCamera
+        storage
+        color
+      }
     }
   }
 `;
@@ -40,27 +60,32 @@ export default function Shop() {
   }, []);
 
   return (
-    <>
-      <Header />
-      <ShopIntro />
-      <div className="shop-container">
-        <Filter />
-        <Query query={productsQuery}>
-          {({ loading, error, data }) => {
-            if (loading) {
-              console.log("loading...");
-            }
-            if (error) {
-              console.log(error);
-            }
-            console.log(data);
-            return <h1>test fetching data</h1>;
-          }}
-        </Query>
-        <ProductsContainer />
-      </div>
-      <Popup />
-      <Footer />
-    </>
+    <Query query={productsQuery}>
+      {({ loading, error, data }) => {
+        // check if is loading data
+        if (loading) {
+          console.log("loading...");
+        }
+
+        // check if there is any error
+        if (error) {
+          console.log(error);
+        }
+
+        // if neither of above, render the shop page and pass the data into the products container for rendering
+        return (
+          <>
+            <Header />
+            <ShopIntro />
+            <div className="shop-container">
+              <Filter />
+              <ProductsContainer products={data} />
+            </div>
+            <Popup />
+            <Footer />
+          </>
+        );
+      }}
+    </Query>
   );
 }
