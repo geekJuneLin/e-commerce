@@ -6,6 +6,8 @@ import Context from "../../Context/Context";
 import Alert from "../../Components/Alert/Alert";
 import Subtotal from "./Subtotal";
 import PaidInfo from "./PaidInfo";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function MyCart() {
   // get the itemsInCart from the context
@@ -129,6 +131,7 @@ export default function MyCart() {
           </div>
         )}
       </div>
+      <ToastContainer />
     </>
   );
 }

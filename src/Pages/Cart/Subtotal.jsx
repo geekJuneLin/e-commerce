@@ -1,21 +1,31 @@
 import React from "react";
 import StripCheckout from "react-stripe-checkout";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Subtotal({ subtotal, changePaymentStatus }) {
   // handle token
   const handleToken = async (token, addr) => {
-    const res = await axios.post("http://localhost:5000/checkout", {
-      price: Number(subtotal) + 5,
-      token,
-    });
+    try {
+      const res = await axios.post("http://localhost:5000/checkout", {
+        price: Number(subtotal) + 5,
+        token,
+      });
 
-    const status = res.status;
+      const status = res.status;
 
-    if (status === 200) {
-      changePaymentStatus(true);
-    } else {
-      changePaymentStatus(false);
+      if (status === 200) {
+        changePaymentStatus(true);
+      } else {
+        changePaymentStatus(false);
+        toast.error("Payment failed, please try again later!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+    } catch (err) {
+      toast.error("Payment failed, please try again later!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
 

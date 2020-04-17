@@ -11,6 +11,10 @@ import NewArrival from "./Pages/NewArrival";
 import ProductDetail from "./Pages/Detail/ProductDetail";
 import MyCart from "./Pages/Cart/MyCart";
 
+import { toast } from "react-toastify";
+
+toast.configure();
+
 function App() {
   // items in cart
   const [itemsInCart, setItemsInCart] = React.useState([]);

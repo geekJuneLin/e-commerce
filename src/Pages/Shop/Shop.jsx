@@ -6,6 +6,7 @@ import ShopIntro from "./ShopIntro";
 import Filter from "./Filter";
 import ProductsContainer from "./ProductsContainer";
 import Popup from "../../Components/Popup/Popup";
+import ReactLoading from "react-loading";
 
 // graphQL
 import { Query } from "react-apollo";
@@ -44,10 +45,13 @@ export default function Shop() {
   // stick the nav bar on the top when users scroll the page down
   const handleScroll = () => {
     const header = document.getElementById("header");
-    if (window.pageYOffset > header.clientHeight) {
-      header.classList.add("sticky");
-    } else {
-      header.classList.remove("sticky");
+
+    if (header !== null) {
+      if (window.pageYOffset > header.clientHeight) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
     }
   };
 
@@ -65,6 +69,17 @@ export default function Shop() {
         // check if is loading data
         if (loading) {
           console.log("loading...");
+          return (
+            <div className="loading-container">
+              <ReactLoading
+                className="loader"
+                type={"spin"}
+                color={"rgb(53, 126, 221)"}
+                height={50}
+                width={50}
+              />
+            </div>
+          );
         }
 
         // check if there is any error
