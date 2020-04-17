@@ -8,7 +8,6 @@ export default function ProductsCard(props) {
 
   const { popupState } = useContext(Context);
   const [popup, setPopup] = popupState;
-  const { isShow, item } = popup;
 
   // handle add to cart
   const handleAddToCart = () => {
