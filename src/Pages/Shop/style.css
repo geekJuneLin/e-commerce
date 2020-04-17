@@ -201,6 +201,14 @@ select {
   opacity: 0;
   transition: all 0.5s ease-in-out;
   pointer-events: visible;
+  border-radius: 10px;
+}
+
+.products-card:hover {
+  transition: all 0.35s linear;
+  box-shadow: 0 0 12px gray;
+  position: relative;
+  top: -2px;
 }
 
 .products-card:hover .add-btn {

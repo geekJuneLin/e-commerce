@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Shop from "./Pages/Shop/Shop";
 import OnSale from "./Pages/OnSale";
 import NewArrival from "./Pages/NewArrival";
-import Header from "./Components/Header";
 import ProductDetail from "./Pages/Detail/ProductDetail";
 import MyCart from "./Pages/Cart/MyCart";
 
