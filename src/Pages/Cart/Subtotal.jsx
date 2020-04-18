@@ -35,7 +35,7 @@ export default function Subtotal({ subtotal, changePaymentStatus }) {
         <div className="left">
           <span>Subtotal:</span>
         </div>
-        <div className="right">$ {subtotal}</div>
+        <div className="right">$ {subtotal.toFixed(2)}</div>
       </div>
       <div className="subtotal-mid">
         <div className="left">
@@ -48,7 +48,8 @@ export default function Subtotal({ subtotal, changePaymentStatus }) {
           <span>Total Due:</span>
         </div>
         <div className="right">
-          <span className="unit">NZD</span> $ {Number(subtotal) + Number(5)}
+          <span className="unit">NZD</span> ${" "}
+          {(Number(subtotal) + Number(5)).toFixed(2)}
         </div>
         <StripCheckout
           className="checkBtn"
