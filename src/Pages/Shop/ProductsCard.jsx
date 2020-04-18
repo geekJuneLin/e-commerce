@@ -31,7 +31,11 @@ export default function ProductsCard(props) {
       <Link to={"/product-detail/" + name}>
         <img src={img} alt="img" />
         <h4>{name}</h4>
-        <p>{description}</p>
+        <p>
+          {description.length > 30
+            ? description.slice(0, 30) + "..."
+            : description}
+        </p>
         <p>${price}</p>
       </Link>
       <div className="add-btn" onClick={handleAddToCart}>
