@@ -43,8 +43,7 @@ export default function ProductDetail({ match }) {
   `;
 
   // get the product using context
-  const { products, items, popupState } = React.useContext(Context);
-  const productsInStore = products[0];
+  const { items, popupState } = React.useContext(Context);
 
   // items in cart
   const [itemsInCart, setItemsInCart] = items;
@@ -52,16 +51,9 @@ export default function ProductDetail({ match }) {
   // pop up state
   const [popup, setPopup] = popupState;
 
-  const [item, setItem] = useState({
-    img: "",
-    price: "",
-    brand: "",
-    specs: {},
-  });
-
   // handle add to cart btn click
-  const handleOnClick = () => {
-    console.log("add to cart btn clicked!");
+  const handleOnClick = (item) => {
+    console.log(`${item}`);
     setItemsInCart([
       ...itemsInCart,
       {
@@ -80,20 +72,6 @@ export default function ProductDetail({ match }) {
       },
     });
   };
-
-  useEffect(() => {
-    productsInStore.forEach((p) => {
-      if (productName === p.name) {
-        setItem({
-          img: p.img,
-          price: p.price,
-          brand: p.brand,
-          specs: p.specs,
-        });
-        return;
-      }
-    });
-  }, []);
 
   return (
     <>
@@ -165,7 +143,16 @@ export default function ProductDetail({ match }) {
                   <p className="delivery">
                     <b>Delivery:</b> Ships in 2 days
                   </p>
-                  <button className="add-to-cart-btn" onClick={handleOnClick}>
+                  <button
+                    className="add-to-cart-btn"
+                    onClick={() => {
+                      const item = {
+                        price: product.productPrice,
+                        img: product.productImg[0].url,
+                      };
+                      handleOnClick(item);
+                    }}
+                  >
                     <i className="fas fa-shopping-cart"></i>Add to cart
                   </button>
                 </div>
