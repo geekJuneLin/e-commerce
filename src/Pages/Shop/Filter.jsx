@@ -12,9 +12,8 @@ export default function Filter({ products }) {
 
   // products in stock
   const { filtered } = React.useContext(Context);
-  // const [productsInStock, setProductsInStock] = products;
+  // get the products
   const productsInStock = products ? products.products : null;
-  console.log(productsInStock);
 
   const [filteredProducts, setFilteredProducts] = filtered;
 

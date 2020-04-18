@@ -47,19 +47,19 @@ export default function ProductsContainer({ products }) {
     switch (e.target.value) {
       case "Price up":
         sorted.sort((a, b) => {
-          return a.price - b.price;
+          return a.productPrice - b.productPrice;
         });
         setProductsInStore(sorted);
         break;
       case "Price down":
         sorted.sort((a, b) => {
-          return b.price - a.price;
+          return b.productPrice - a.productPrice;
         });
         setProductsInStore(sorted);
         break;
       case "Brand":
         sorted.sort((a, b) => {
-          return a.name > b.name ? 1 : -1;
+          return a.productName > b.productName ? 1 : -1;
         });
         setProductsInStore(sorted);
         break;
