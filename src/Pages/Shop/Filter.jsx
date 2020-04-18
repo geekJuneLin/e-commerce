@@ -4,15 +4,18 @@ import "react-input-range/lib/css/index.css";
 import "./style.css";
 import Context from "../../Context/Context";
 
-export default function Filter() {
+export default function Filter({ products }) {
   const [value, setValue] = React.useState({
     min: 0,
     max: 0,
   });
 
   // products in stock
-  const { products, filtered } = React.useContext(Context);
-  const [productsInStock, setProductsInStock] = products;
+  const { filtered } = React.useContext(Context);
+  // const [productsInStock, setProductsInStock] = products;
+  const productsInStock = products ? products.products : null;
+  console.log(productsInStock);
+
   const [filteredProducts, setFilteredProducts] = filtered;
 
   // max price for filter
@@ -22,7 +25,7 @@ export default function Filter() {
     // find the max price in the products in stock
     var maxValue = 0;
     productsInStock.map((p) => {
-      maxValue = maxValue < Number(p.price) ? p.price : maxValue;
+      maxValue = maxValue < Number(p.productPrice) ? p.productPrice : maxValue;
     });
     setMaxPrice(Number(maxValue));
     setValue({
@@ -34,7 +37,7 @@ export default function Filter() {
   useEffect(() => {
     // filter the displaying products
     const filteredPro = productsInStock.filter((p) => {
-      return p.price <= value.max && p.price >= value.min;
+      return p.productPrice <= value.max && p.productPrice >= value.min;
     });
 
     setFilteredProducts(filteredPro);

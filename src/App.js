@@ -42,7 +42,7 @@ function App() {
       value={{
         items: [itemsInCart, setItemsInCart],
         showCart: [showCart, setShowCart],
-        products: [productsInStore, setProductsInStore],
+        // products: [productsInStore, setProductsInStore],
         filtered: [filteredProducts, setFilteredProducts],
         popupState: [popup, setPopup],
       }}

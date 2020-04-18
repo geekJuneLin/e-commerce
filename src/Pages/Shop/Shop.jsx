@@ -55,6 +55,7 @@ export default function Shop() {
     }
   };
 
+  // listener for scrolling event
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
@@ -93,7 +94,7 @@ export default function Shop() {
             <Header />
             <ShopIntro />
             <div className="shop-container">
-              <Filter />
+              <Filter products={data} />
               <ProductsContainer products={data} />
             </div>
             <Popup />

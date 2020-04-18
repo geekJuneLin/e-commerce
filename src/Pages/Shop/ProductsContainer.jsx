@@ -7,13 +7,11 @@ export default function ProductsContainer({ products }) {
   // get the context
   const { filtered, items } = React.useContext(Context);
 
-  if (products) console.log(products.products);
-
   // products in stock
   const [productsInStore, setProductsInStore] = filtered;
 
   // original products in store
-  // const [product, setProducts] = products;
+  const product = products ? products.products : null;
 
   // items added in the cart
   const [itemsInCart, setItemsInCart] = items;
@@ -73,27 +71,26 @@ export default function ProductsContainer({ products }) {
   // handle filter on change
   const handleFilterOnChange = (e) => {
     console.log("filtering by " + e.target.value);
-    const sorted = products.slice();
+    const sorted = product.slice();
     switch (e.target.value) {
       case "New":
         setProductsInStore(
           sorted.filter((p) => {
-            console.log(p.type);
-            return p.type === "New";
+            return p.productSaleType === "New";
           })
         );
         break;
       case "On Sale":
         setProductsInStore(
           sorted.filter((p) => {
-            return p.type === "On Sale";
+            return p.productSaleType === "On Sale";
           })
         );
         break;
       case "Most Popular":
         setProductsInStore(
           sorted.filter((p) => {
-            return p.type === "Most Popular";
+            return p.productSaleType === "Most Popular";
           })
         );
         break;
@@ -104,7 +101,7 @@ export default function ProductsContainer({ products }) {
 
   // handle reset btn onClick
   const handleResetOnClick = () => {
-    setProductsInStore(products);
+    setProductsInStore(product);
   };
 
   return (
@@ -131,19 +128,18 @@ export default function ProductsContainer({ products }) {
         <button id="reset-btn">Reset filter</button>
       </div>
       <div className="products-body">
-        {products &&
-          products.products.map((product) => {
-            return (
-              <ProductsCard
-                key={product.id}
-                name={product.productName}
-                img={product.productImg[0].url}
-                description={product.productDescription}
-                price={product.productPrice}
-                addToCart={addToCart}
-              />
-            );
-          })}
+        {productsInStore.map((product) => {
+          return (
+            <ProductsCard
+              key={product.id}
+              name={product.productName}
+              img={product.productImg[0].url}
+              description={product.productDescription}
+              price={product.productPrice}
+              addToCart={addToCart}
+            />
+          );
+        })}
       </div>
     </div>
   );
