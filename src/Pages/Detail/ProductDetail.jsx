@@ -73,6 +73,20 @@ export default function ProductDetail({ match }) {
     });
   };
 
+  // show slide at index
+  const showSlideAtIndex = (n) => {
+    console.log(n);
+    const slides = document.getElementsByClassName("detail-img");
+    const thumbnail = document.getElementsByClassName("thumbnail-img");
+    console.log(slides.length);
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      thumbnail[i].className = "thumbnail-img";
+    }
+    slides[n].style.display = "block";
+    thumbnail[n].className = "thumbnail-img thumbnail-active ";
+  };
+
   return (
     <>
       <Header />
@@ -89,9 +103,33 @@ export default function ProductDetail({ match }) {
                 <div className="detail-container-body">
                   <h1>{productName}</h1>
                   <div className="detail-img-specs">
-                    <div className="detail-img">
-                      <img src={product.productImg[0].url} alt="product-img" />
+                    {/* detail images slide gallary */}
+                    <div className="imgs-container">
+                      {product.productImg.map((img, index) => {
+                        return (
+                          <div key={index} className="detail-img">
+                            <img src={img.url} alt="product-img" />
+                          </div>
+                        );
+                      })}
+                      <div className="thumbnail-container">
+                        {product.productImg.map((img, index) => {
+                          return (
+                            <div
+                              key={index}
+                              id={index}
+                              className="thumbnail-img"
+                              onClick={() => {
+                                showSlideAtIndex(index);
+                              }}
+                            >
+                              <img src={img.url} alt="product-img" />
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
+
                     <div className="detail-specs">
                       <div className="detail-specs-overall-info">
                         <b>Brand: </b> {product.productBrand.brandName}
