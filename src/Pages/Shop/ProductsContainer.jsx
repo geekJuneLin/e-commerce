@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./style.css";
 import ProductsCard from "./ProductsCard";
 import Context from "../../Context/Context";
+import { useState } from "react";
 
 export default function ProductsContainer({ products }) {
   // get the context
@@ -9,6 +10,17 @@ export default function ProductsContainer({ products }) {
 
   // products in stock
   const [productsInStore, setProductsInStore] = filtered;
+
+  // show page index
+  const [showPageIndex, setShowPageIndex] = useState(0);
+  const [pages, setPages] = useState(null);
+  const [pageBtns, setPageBtns] = useState(null);
+
+  // split the in store products into small chunks, 12 / chunk
+  var splitProductsInStore = [];
+  for (var i = 0; i < productsInStore.length; i += 12) {
+    splitProductsInStore.push(productsInStore.slice(i, i + 12));
+  }
 
   // original products in store
   const product = products ? products.products : null;
@@ -21,6 +33,16 @@ export default function ProductsContainer({ products }) {
     setItemsInCart([...itemsInCart, item]);
   };
 
+  useEffect(() => {
+    // get the product body div elements
+    const pages = document.getElementsByClassName("products-body");
+    setPages(pages);
+
+    // get the page btns elements
+    const btns = document.getElementsByClassName("page-btn");
+    setPageBtns(btns);
+  }, []);
+
   // addEventListener to the selections
   useEffect(() => {
     const sortSelections = document.getElementById("sort-selection");
@@ -32,6 +54,9 @@ export default function ProductsContainer({ products }) {
     filterSelections.addEventListener("change", handleFilterOnChange);
     reset.addEventListener("click", handleResetOnClick);
 
+    // show the first page
+    showPage();
+
     // remove listener
     return () => {
       sortSelections.removeEventListener("change", handleSortOnChange);
@@ -39,6 +64,38 @@ export default function ProductsContainer({ products }) {
       reset.removeEventListener("click", handleResetOnClick);
     };
   });
+
+  // show page at index
+  const showPage = () => {
+    if (pages && pageBtns) {
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+      }
+
+      if (pages[showPageIndex]) pages[showPageIndex].style.display = "flex";
+      for (var i = 0; i < pageBtns.length; i++) {
+        pageBtns[i].classList.remove("active");
+      }
+      if (pageBtns[showPageIndex])
+        pageBtns[showPageIndex].classList.add("active");
+    }
+  };
+
+  // handle previous btn click
+  const handleOnPrevBtnClick = () => {
+    var index = showPageIndex - 1;
+    if (index < 0) index = pages.length - 1;
+    setShowPageIndex(index);
+    showPage();
+  };
+
+  // handle next btn click
+  const handleOnNextBtnClick = () => {
+    var index = showPageIndex + 1;
+    if (index >= pages.length) index = 0;
+    setShowPageIndex(index);
+    showPage();
+  };
 
   // handle selection onChange
   const handleSortOnChange = (e) => {
@@ -127,19 +184,47 @@ export default function ProductsContainer({ products }) {
 
         <button id="reset-btn">Reset filter</button>
       </div>
-      <div className="products-body">
-        {productsInStore.map((product) => {
-          return (
-            <ProductsCard
-              key={product.id}
-              name={product.productName}
-              img={product.productImg[0].url}
-              description={product.productDescription}
-              price={product.productPrice}
-              addToCart={addToCart}
-            />
-          );
-        })}
+
+      {splitProductsInStore.map((productBody, index) => {
+        return (
+          <div key={index} className="products-body">
+            {productBody.map((product) => {
+              return (
+                <ProductsCard
+                  key={product.id}
+                  name={product.productName}
+                  img={product.productImg[0].url}
+                  description={product.productDescription}
+                  price={product.productPrice}
+                  addToCart={addToCart}
+                />
+              );
+            })}
+          </div>
+        );
+      })}
+
+      {/* pagination btns */}
+      <div className="pagination-container">
+        <div className="previous-btn" onClick={handleOnPrevBtnClick}>
+          Previous
+        </div>
+        <div className="page-btn-container">
+          {splitProductsInStore.map((productBody, index) => {
+            return (
+              <div
+                key={index}
+                className="page-btn"
+                onClick={() => setShowPageIndex(index)}
+              >
+                {index + 1}
+              </div>
+            );
+          })}
+        </div>
+        <div className="next-btn" onClick={handleOnNextBtnClick}>
+          Next
+        </div>
       </div>
     </div>
   );
