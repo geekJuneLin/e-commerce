@@ -22,9 +22,6 @@ function App() {
   // status of whether showing the cart
   const [showCart, setShowCart] = React.useState(false);
 
-  // products in store
-  const [productsInStore, setProductsInStore] = React.useState(Products);
-
   // filtered products
   const [filteredProducts, setFilteredProducts] = React.useState([]);
 
@@ -42,7 +39,6 @@ function App() {
       value={{
         items: [itemsInCart, setItemsInCart],
         showCart: [showCart, setShowCart],
-        // products: [productsInStore, setProductsInStore],
         filtered: [filteredProducts, setFilteredProducts],
         popupState: [popup, setPopup],
       }}
